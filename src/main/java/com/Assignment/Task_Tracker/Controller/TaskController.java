@@ -55,7 +55,7 @@ public class TaskController {
             @PathVariable String taskId,
             @RequestBody Map<String, String> body) {
         String userId = body.get("userId");
-        return ResponseEntity.ok(taskService.assignTask(taskId, userId));
+        return ResponseEntity.ok(taskService.assignTask(taskId, userId, body.get("currentUserId")));
     }
 
     @PatchMapping("/{taskId}/status")
@@ -63,12 +63,12 @@ public class TaskController {
             @PathVariable String taskId,
             @RequestBody Map<String, String> body) {
         String status = body.get("status");
-        return ResponseEntity.ok(taskService.updateTaskStatus(taskId, status));
+        return ResponseEntity.ok(taskService.updateTaskStatus(taskId, status,body.get("currentUserId")));
     }
 
     @DeleteMapping("/{taskId}")
     public ResponseEntity<MessageResponse> deleteTask(@PathVariable String taskId) {
-        taskService.deleteTask(taskId);
+        taskService.deleteTask(taskId,("currentUserId"));
         return ResponseEntity.ok(new MessageResponse("Task deleted successfully"));
     }
 }

@@ -9,5 +9,5 @@ public class UpdateTaskRequest {
     private String title;
     private String description;
     private LocalDateTime dueDate;
-    private String priority;
+    private String status;
 }
