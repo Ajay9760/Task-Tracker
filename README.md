@@ -141,6 +141,11 @@ http://localhost:8080
 ---
 
 
+Example:
+```
+/assets/screenshots/dashboard.png
+/assets/screenshots/api-response.png
+```
 
 ## 🤝 Contributing
 
