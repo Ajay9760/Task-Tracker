@@ -97,9 +97,9 @@ public class TaskService {
         
         List<Task> tasks;
         if (search != null && !search.trim().isEmpty()) {
-            tasks = taskRepository.findByProjectIdAndStatus(search, search);
+            tasks = taskRepository.findByProjectIdAndStatus(search, Task.TaskStatus.valueOf(search));
         } else if (status != null && !status.trim().isEmpty()) {
-            tasks = taskRepository.findByStatus(status);
+            tasks = taskRepository.findByStatus(Task.TaskStatus.valueOf(status));
         } else {
             tasks = taskRepository.findAll();
         }

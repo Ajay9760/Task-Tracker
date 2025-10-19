@@ -45,14 +45,16 @@ public class TeamControllerTest {
 
     @Test
     void createTeam_returnsOk() throws Exception {
-        TeamResponse mockResponse = new TeamResponse(
-            "1L",
-            request.getName(),
-            request.getDescription(),
-            "testuser",
-            String.valueOf(List.of("testuser")),1
-            LocalDateTime.now()
-        );
+        TeamResponse mockResponse = TeamResponse.builder()
+                .id("1L")
+                .name(request.getName())
+                .description(request.getDescription())
+                .createdById("testuser")
+                .createdByUsername("testuser")
+                .memberCount(1)
+                .createdAt(LocalDateTime.now())
+                .updatedAt(LocalDateTime.now())
+                .build();
 
         Mockito.when(teamService.createTeam(anyString(), any(CreateTeamRequest.class))).thenReturn(mockResponse);
         

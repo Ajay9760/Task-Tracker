@@ -297,4 +297,25 @@ public class TeamService {
             throw new BadRequestException("Team name must be less than 100 characters");
         }
     }
+    public List<TaskResponse> getAllTasks(String status, String search) {
+        log.debug("Fetching tasks with status: {}, search: {}", status, search);
+
+        List<Task> tasks;
+        if (search != null && !search.trim().isEmpty()) {
+            tasks = taskRepository.searchTasks(search);
+        } else if (status != null && !status.trim().isEmpty()) {
+            try {
+                Task.TaskStatus taskStatus = Task.TaskStatus.valueOf(status.toUpperCase());
+                tasks = taskRepository.findByStatus(Task.TaskStatus.valueOf(String.valueOf(taskStatus)));
+            } catch (IllegalArgumentException e) {
+                throw new BadRequestException("Invalid status value: " + status);
+            }
+        } else {
+            tasks = taskRepository.findAll();
+        }
+
+        return tasks.stream()
+                .map(this::mapToTaskResponse)
+                .collect(Collectors.toList());
+    }
 }
