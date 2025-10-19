@@ -20,7 +20,6 @@ This project is designed for both personal productivity and team collaboration, 
 - [Configuration](#configuration)
 - [Running the Application](#running-the-application)
 - [API Endpoints](#api-endpoints)
-- [Screenshots](#screenshots)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -54,7 +53,7 @@ It supports creating, updating, deleting, and tracking the progress of tasks whi
 | **Backend Framework** | Spring Boot 3.3+ |
 | **Language** | Java 21 |
 | **Build Tool** | Maven |
-| **Database** | H2 (dev) / MySQL (prod) |
+| **Database** | H2 (dev)  |
 | **Security** | Spring Security + JWT |
 | **ORM** | Spring Data JPA |
 | **Validation** | Hibernate Validator |
@@ -76,7 +75,6 @@ Task-Tracker/
 │   │   │   └── config/            # Security and CORS configuration
 │   │   └── resources/
 │   │       ├── application.yml    # Configurations
-│   │       └── data.sql           # Sample data (optional)
 │   └── test/                      # Unit & integration tests
 ├── pom.xml
 └── README.md
@@ -103,24 +101,6 @@ mvn clean install
 
 ---
 
-## 🛠 Configuration
-
-Edit your environment variables in `application.yml` or `application.properties`:
-
-```yaml
-spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/tasktracker
-    username: root
-    password: yourpassword
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-  security:
-    jwt:
-      secret: your_secret_key
-```
 
 You can switch to **H2** for local testing:
 
@@ -160,17 +140,12 @@ http://localhost:8080
 
 ---
 
-## 🖼 Screenshots
-
-_Add screenshots of Swagger UI, Postman results, or database structure here._
 
 Example:
 ```
 /assets/screenshots/dashboard.png
 /assets/screenshots/api-response.png
 ```
-
----
 
 ## 🤝 Contributing
 
@@ -199,6 +174,5 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 **GitHub:** [Ajay9760](https://github.com/Ajay9760)  
 **Project Link:** [Task Tracker](https://github.com/Ajay9760/Task-Tracker)
 
----
 
-> _“Track your tasks. Stay organized. Deliver efficiently.”_
+
